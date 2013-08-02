@@ -18,3 +18,58 @@ In accordance with the style of iOS 7 this class also includes a tintColor prope
 
 When deciding to use this class in a project there are a few simple steps that must be done. After alloc-init, the next step is to set custom attributes for the frame, tintColor, trackIndicatorImage, and progressIndicatorImage according to the use case. In most cases the system defaults will be enough to satesfy the needs of the project, but the ability to change such properties is provided. The next step is to call the method setProgress: animated: (detailed descriptions for all of these properties and methods is provided below). This method sets the initial progress of the view, and now the only step is to add it to another UIView for display. Keep in mind that a frame CGRect must be provided, as there is no default size given, and this will cause problems during implementation. 
 
+## Tasks
+
+### Initializing a BAProgressView Object
+  	- init:
+		- initWithFrame:
+### Setting and Getting Progress
+		- setProgress: 
+		progress (property)
+### UI Customization Attributes
+		trackIndicatorImage (property)
+		progressIndicatorImage (property)
+		tintColor (property)
+		numberOfIndicators (property)
+
+## Properties
+### progress
+The progress of the indicator represented by a number between 0 and 1. The default value is 0.
+
+<code>@property (nonatomic, readonly) float progress</code>
+
+### tintColor
+The extension of the standard UIView property that is rendered as an overlay onto the indicator images and blended in to give the appearance of iOS 7 style tinting. The default value is [UIColor grayColor].
+
+<code>@property (nonatomic, strong) UIColor *tintColor</code>
+
+### trackIndicatorImage
+The image, either default or provided, that will be used to render the progress track. This track represents the unfilled, or uncompleted part of the process. This indicator is replaced by the progressIndicatorImage once the cooresponding segment of the process is set. 
+
+The default value is "BATrackIndicatorImage.png".
+
+<code>@property (nonatomic, strong) UIImage *trackIndicatorImage</code>
+### progressIndicatorImage
+The image, either default or provided, that will be used to render the progress. This progress represents the filler, or completed part of the process. This indicator is replaces by the trackIndicatorImage once the cooresponding segment of the process is set. The default value is 
+"BAProgressIndicatorImage.png".
+
+<code>@property (nonatomic, strong) UIImage *progressIndicatorImage</code>
+
+### numberOfIndicators 
+The total number of indicator images that will represent the progress total. The higher the value, the more accurate the process can be mapped. The The default value is 10.
+
+<code>@property (nonatomic) NSInteger numberOfIndicators</code>
+
+## Instance Methods
+### initWithFrame:
+Along with the standard -init method, this method will instantiate and set the defaults for a typical BAProgressView object. It is reccomended that this method be used over the standard init so that the frame property, one that is required, but not provided by default, is provided from the start.
+
+<code>
+- (id) initWithFrame:(CGRect)frame <br />
+- (id) init:
+</code>
+
+### setProgress:
+This method is the way that the progress property, and therefore the interface is updated to reflect the current progress of a given task. This method requires a float value for the progress.
+
+<code> - (void) setProgress:(float)progress </code>
