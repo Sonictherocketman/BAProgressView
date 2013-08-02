@@ -18,6 +18,11 @@ In accordance with the style of iOS 7 this class also includes a tintColor prope
 
 When deciding to use this class in a project there are a few simple steps that must be done. After alloc-init, the next step is to set custom attributes for the frame, tintColor, trackIndicatorImage, and progressIndicatorImage according to the use case. In most cases the system defaults will be enough to satesfy the needs of the project, but the ability to change such properties is provided. The next step is to call the method setProgress: animated: (detailed descriptions for all of these properties and methods is provided below). This method sets the initial progress of the view, and now the only step is to add it to another UIView for display. Keep in mind that a frame CGRect must be provided, as there is no default size given, and this will cause problems during implementation. 
 
+## Known Issues
+
+<b>Custom Colors</b> made using any method outside of the default system color methods (blueColor, greenColor, etc) cause the CGImage property of tintColor (UIColor) to become nil. This causes the images to fail to display and the indicator remains blank after drawing. There is no known workaround for this issue other than to use only the system color methods.
+
+
 ## Tasks
 
 ### Initializing a BAProgressView Object
