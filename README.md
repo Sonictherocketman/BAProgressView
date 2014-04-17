@@ -75,6 +75,6 @@ Along with the standard -init method, this method will instantiate and set the d
 </code>
 
 ### setProgress:
-This method is the way that the progress property, and therefore the interface is updated to reflect the current progress of a given task. This method requires a float value for the progress.
+This method requires a float value for the progress. The float value represents the completed percentage of the process.
 
 <code> - (void) setProgress:(float)progress </code>

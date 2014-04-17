@@ -1,6 +1,5 @@
 //
 //  BAProgressView.m
-//  MTGCounter
 //
 //  Created by Brian Schrader on 7/28/13.
 //  Copyright (c) 2013 Brian Schrader. All rights reserved.
@@ -21,7 +20,8 @@
 
 #pragma mark - Initilization
 
-- (id) initWithFrame:(CGRect)frame {
+- (id) initWithFrame:(CGRect)frame
+{
     self = [super initWithFrame:frame];
     if (self) {
         self.frame = frame;
@@ -41,22 +41,25 @@
 
 #pragma mark - Configuration
 
--(void)configureDefaults {
+-(void)configureDefaults
+{
     //Zero everything to default
     _progress = 0.0;
     _progressIndicatorImage = [UIImage imageNamed:@"BAProgressImage.png"];
     _trackIndicatorImage = [UIImage imageNamed:@"BATrackImage.png"];
     _totalIndicators = 10;
-    _tintColor = [UIColor blueColor];//Kind of a gray-blue. What? I like it!
+    _tintColor = [UIColor blueColor];
     _currentIndicators = 0;
     [self setBackgroundColor:[UIColor clearColor]];
 }
 
--(void)drawRect:(CGRect)rect {
+-(void)drawRect:(CGRect)rect
+{
     [self updateInterface];
 }
 
--(void)updateInterface {
+-(void)updateInterface
+{
     float indicatorRectWidth = self.frame.size.width / _totalIndicators;
     float indicatorRectHeight;
     float indicatorWidthPadding;
@@ -95,7 +98,8 @@
 
 #pragma mark - Public Methods
 
--(void) setProgress:(float)progress {    
+-(void) setProgress:(float)progress
+{
     _progress = progress * _totalIndicators;
     _currentIndicators = (int)roundf(_progress);
     if (_currentIndicators <= _totalIndicators) {
@@ -104,6 +108,16 @@
         _currentIndicators = _totalIndicators;
         _progress = 1.0;
     }
+}
+
+-(void)setTrackIndicator:(NSString *)trackIndicator
+{
+    _trackIndicatorImage = [UIImage imageNamed:trackIndicator];
+}
+
+-(void)setProgressIndicator:(NSString *)progressIndicator
+{
+    _progressIndicatorImage = [UIImage imageNamed:progressIndicator];
 }
 
 @end
